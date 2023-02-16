@@ -9,7 +9,7 @@ export const getUser = () => {
     });
 
     useEffect(() => {
-        fetch("http://localhost:8000/api/user/me/", {
+        fetch(BASE_URL+"/api/user/me/", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

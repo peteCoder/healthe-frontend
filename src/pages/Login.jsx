@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import doctor from '../assets/doctor.jpg'
 import { Link, useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../utils/request';
 
 const Login = () => {
   const navigation = useNavigate()
@@ -22,7 +23,7 @@ const Login = () => {
       data.append("password", user.password);
       data.append("username", user.username);
 
-      fetch("http://127.0.0.1:8000/api/api-token-auth/", {
+      fetch(BASE_URL+"api/api-token-auth/", {
         method: "POST",
         body: data,
       }).then((response) => {

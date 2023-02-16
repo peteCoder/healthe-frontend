@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { csrftoken } from "../../utils/csrftoken";
 import { getToken } from '../../utils/getToken'
+import { BASE_URL } from "../../utils/request";
 function PatientsRegistration() {
   const [patient, setPatient] = useState({
     first_name: "",
@@ -21,7 +22,7 @@ function PatientsRegistration() {
   const [patientStatus, setPatientStatus] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/patient-type/")
+    fetch(BASE_URL + "api/patient-type/")
       .then((response) => response.json())
       .then((mydata) => setPatientStatus(mydata));
   }, []);
@@ -59,7 +60,7 @@ function PatientsRegistration() {
       };
 
 
-      fetch("http://127.0.0.1:8000/api/patient/", options)
+      fetch(BASE_URL+"api/patient/", options)
         .then((response) =>  {
           response.json()
           setNotification("Patient was successfully added..")
