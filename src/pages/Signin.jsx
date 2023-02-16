@@ -3,6 +3,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import { csrftoken } from "../utils/csrftoken";
 
 import doctor from "../assets/doctor.jpg";
+import { BASE_URL } from "../utils/request";
 
 const UsersRegistration = () => {
 
@@ -53,7 +54,7 @@ const UsersRegistration = () => {
 
     
     
-    fetch('http://localhost:8000/api/user/', options)
+    fetch(BASE_URL+'api/user/', options)
       .then(response => {
         return response.json()
       })
