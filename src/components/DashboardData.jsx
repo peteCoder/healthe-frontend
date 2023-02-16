@@ -1,23 +1,25 @@
 import React from 'react'
-
-function DashboardData() {
-            const users = [
-          {
-            greeting: "Good Afternoon",
-            firstname: "Dr Omokaro",
-            lastname: "Fidelis",
-          },
-        ]
+import { getTimeOfDay } from '../utils/getTimeOfDay';
+import { getDate } from '../utils/getTimeOfDay';
+function DashboardData({ user }) {
+  console.log("user: ", user)
+          const me = user
+            const myUser = {
+            greeting: getTimeOfDay(),
+            firstname: me.first_name,
+            lastname: me.last_name,
+          }
+        
   return (
         <section className="px-4">
             {/* main content */}
             <div className="flex flex-col w-full  shadow-lg my-4 p-6 rounded-xl wave-background">
               <div className="flex flex-row justify-between items-center">
                 <div className="flex flex-col">
-                  {users?.map((user, i) => (
+                  
                     <div className="flex flex-col">
                       <p className="text-sm tracking-wide flex">
-                        {user?.greeting}
+                        {myUser.greeting}
                         <span className="ml-1 text-yellow-500">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -37,10 +39,10 @@ function DashboardData() {
                       </p>
 
                       <h2 className="my-2">
-                        {user?.firstname} {user?.lastname}
+                        {myUser.firstname} {myUser.lastname}
                       </h2>
                     </div>
-                  ))}
+                  
                 </div>
                 <div className="flex flex-col">
                   <div className="flex flex-row justify-end items-center font-300 text-darkGray text-xs">
@@ -59,14 +61,14 @@ function DashboardData() {
                       />
                     </svg>
 
-                    <p>18th Jan 2023</p>
+                    <p>{getDate()}</p>
                   </div>
 
                   {/* Grid */}
                   <div className="py-2">
                     <div className="flex flex-row">
-                      {/* grid 1 */}
-                      <div className="flex flex-col text-green-500">
+                     
+                      {/* <div className="flex flex-col text-green-500">
                         <p className="uppercase text-[12px] py-2">Patients</p>
                         <div className="flex flex-row">
                           <h2 className="text-[3rem]">105</h2>
@@ -89,11 +91,11 @@ function DashboardData() {
                             <p className="text-xs text-darkGray">0.5%</p>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
 
                       <div className="divider lg:divider-horizontal py-5 before:bg-black after:bg-black"></div>
 
-                      <div className="flex flex-col text-orange-500">
+                      {/* <div className="flex flex-col text-orange-500">
                         <p className="uppercase text-[12px] py-2">
                           appointments
                         </p>
@@ -118,11 +120,11 @@ function DashboardData() {
                             <p className="text-xs text-darkGray">0.2%</p>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
 
                       <div className="divider lg:divider-horizontal  py-5 before:bg-black after:bg-black"></div>
 
-                      <div className="flex flex-col text-blue-500">
+                      {/* <div className="flex flex-col text-blue-500">
                         <p className="uppercase text-[12px] py-2">visits</p>
                         <div className="flex flex-row">
                           <h2 className="text-[3rem]">200</h2>
@@ -145,7 +147,7 @@ function DashboardData() {
                             <p className="text-xs text-darkGray">1.5%</p>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

@@ -7,25 +7,26 @@ import { RxCalendar } from "react-icons/rx";
 // import {FiFolder, FiShoppingCart } from "react-icons/fi";
 import {BsFileEarmarkText } from "react-icons/bs";
 import {BiExit} from "react-icons/bi";
+import { NavLink } from 'react-router-dom';
 
 function DoctorsSidebar() {
             const menus = [
               { name: "dashboard", link: "./", icon: MdOutlineDashboard },
-              { name: "appointments", link: "./", icon: RxCalendar },
+              { name: "appointments", link: "/appointments", icon: RxCalendar },
               {
                 name: "consultation",
-                link: "./",
+                link: "/consultation",
                 icon: MdOutlineEventNote,
                 margin: true,
               },
               {
                 name: "patient's history",
-                link: "./",
+                link: "/patient-history",
                 icon: BsFileEarmarkText,
               },
               {
                 name: "Log out",
-                link: "./",
+                link: "/logout",
                 icon: BiExit,
                 margin: true,
               },
@@ -45,9 +46,9 @@ function DoctorsSidebar() {
         />
       </div>
       <div className="mt-4 pl-3 flex flex-col gap-4 relative">
-        {menus?.map((menu, i) => (
-          <a
-            href="#"
+        {menus.map((menu, i) => (
+          <NavLink
+            to={menu.link}
             className={` ${menu?.margin && "mt-5"} ${
               !open && "hover:bg-transparent hover:text-blue-500"
             } flex items-center text-sm group gap-3.5 font-medium p-2 hover:bg-lightBlue rounded-md`}
@@ -59,16 +60,16 @@ function DoctorsSidebar() {
                 !open && "opacity-0 translate-x-28 overflow-hidden"
               }`}
             >
-              {menu?.name}
+              {menu.name}
             </h2>
             <h2
               className={`${
                 open && "hidden"
               } absolute left-48 bg-white font-semibold whitespace-pre text-darkGray rounded-md drop-shadow-lg px-0 py-0 group-hover:px-2 group-hover:py-1 group-hover:left-20 group-hover:duration-300 w-0 overflow-hidden group-hover:w-fit `}
             >
-              {menu?.name}
+              {menu.name}
             </h2>
-          </a>
+          </NavLink>
         ))}
       </div>
     </div>

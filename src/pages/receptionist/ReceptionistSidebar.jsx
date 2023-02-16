@@ -6,26 +6,34 @@ import { BiExit } from "react-icons/bi";
 import {FaRegAddressCard } from "react-icons/fa";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { TbCalendarTime } from "react-icons/tb";
+import { NavLink } from 'react-router-dom';
 
 function ReceptionistSidebar()   {             
 const menus = [
-  { name: "dashboard", link: "./", icon: MdOutlineDashboard },
-  { name: "patient's registration", link: "./", icon: AiOutlineUserAdd },
+  { name: "dashboard", link: "/", icon: MdOutlineDashboard },
+  { name: "patient's registration", link: "/register-patient", icon: AiOutlineUserAdd },
   {
     name: "patient's data",
-    link: "./",
+    link: "/patient-data",
     icon: FaRegAddressCard,
     margin: true,
   },
   {
+    name: "patient data",
+    link: "/patients",
+    icon: FaHandHoldingMedical,
+    margin: true,
+  },
+  {
     name: "book appointment",
-    link: "./",
+    link: "/appointments",
     icon: TbCalendarTime,
     margin: true,
   },
   {
     name: "Log out",
-    link: "./",
+    link: "/login",
+    goOut: true,
     icon: BiExit,
     margin: true,
   },
@@ -45,9 +53,17 @@ const menus = [
         />
       </div>
       <div className="mt-4 pl-3 flex flex-col gap-4 relative">
-        {menus?.map((menu, i) => (
-          <a
-            href="#"
+        {menus.map((menu, i) => (
+          <NavLink
+          onClick={() => {
+            if (menu.goOut){
+              localStorage.setItem("token", JSON.stringify({"token":""}));
+              navigation('/login')
+            } else{
+              return null
+            }
+          }}
+            to={menu.link}
             className={` ${menu?.margin && "mt-5"} ${
               !open && "hover:bg-transparent hover:text-blue-500"
             } flex items-center text-sm group gap-3.5 font-medium p-2 hover:bg-lightBlue rounded-md`}
@@ -68,7 +84,7 @@ const menus = [
             >
               {menu?.name}
             </h2>
-          </a>
+          </NavLink>
         ))}
       </div>
     </div>

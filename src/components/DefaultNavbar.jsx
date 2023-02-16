@@ -1,7 +1,8 @@
 import React from 'react'
 import DefaultSearch from './DefaultSearch';
+import { BASE_URL } from '../utils/request';
 
-export const DefaultNavbar = () => {
+export const DefaultNavbar = ({user}) => {
   return (
     <div>
       <div className="navbar bg-base-100 shadow-lg">
@@ -15,7 +16,7 @@ export const DefaultNavbar = () => {
           <div className="dropdown dropdown-left">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-lg">
-                <img src="https://placeimg.com/80/80/people" />
+                <img src={`${BASE_URL}${user.photo}`} />
               </div>
             </label>
           </div>
